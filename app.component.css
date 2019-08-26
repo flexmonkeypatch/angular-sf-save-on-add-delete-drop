@@ -1,0 +1,14 @@
+    #srcGrid {
+        float: right;
+    }
+    
+    #destGrid {
+        float: left;
+    }
+
+    .e-mastertext {
+    font-size: 15px;
+    font-family: Roboto;
+    opacity: 0.87;
+    padding: 1em;
+    }
