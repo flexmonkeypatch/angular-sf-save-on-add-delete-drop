@@ -1,26 +1,21 @@
 <div class="control-section">
 
-	<div class='e-mastertext'>Drag and Drop Rows between two Grids with automatic ordering in the Source Grid and user ordering (drag/drop within) the Destination grid</div>
+	<div class='e-mastertext'>
+    Automatically "save" the dest grid data after an item is added, deleted or dropped, calculating sort order index based on grid index
+    </div>
 	<div style="display: inline-block">
 	
-
 		<ejs-grid id='destGrid' #destGrid 
     height='300' 
       [dataSource]="destData"
       [allowSelection]="true"
-      (mouseover)="destGridMouseover($event)"
-      (rowDrag)="destRowDrag($event)"
-      (rowDragStartHelper)="destRowDragStartHelper($event)"
       [allowRowDragAndDrop]="true"
-      [selectionSettings]="{ type: 'Multiple' }"
       (actionComplete)="destGridActionComplete($event)"
-      [rowDropSettings]="{ targetID: 'srcGrid' }"
-      (rowDrop)="destRowDrop($event)"
       (recordDoubleClick)="destGridDoubleClick($event)"
       [editSettings]="{ allowAdding: true, allowDeleting: true }"
       width="49%">
 			<e-columns>
-				<e-column field='id' headerText='Selected' width='120' isPrimaryKey='true' clipMode="EllipsisWithTooltip" >
+				<e-column field='id' headerText='Dest' width='120' isPrimaryKey='true' clipMode="EllipsisWithTooltip" >
            <ng-template #template let-data>
 								<div>
 									<span>{{ data.code + '-' +  data.description }}</span>
@@ -39,19 +34,11 @@
     	<ejs-grid id='srcGrid' #srcGrid 
       height='300' 
       [dataSource]="srcData"
-      (created)="srcGridCreated()"
-      [query]="srcQuery"
-      [allowSelection]="true"
-      (rowDrag)="srcRowDrag()"
-      [allowRowDragAndDrop]="true"
-      [selectionSettings]="{ type: 'Multiple' }"
-      [rowDropSettings]="{ targetID: 'destGrid' }"
-      (rowDrop)="srcRowDrop($event)"
       (recordDoubleClick)="srcGridDoubleClick($event)"
       [editSettings]="{ allowAdding: true, allowDeleting: true }"
      width="49%">
 			<e-columns>
-				<e-column field='id' headerText='Available' width='120' isPrimaryKey='true' clipMode="EllipsisWithTooltip">
+				<e-column field='id' headerText='Src' width='120' isPrimaryKey='true' clipMode="EllipsisWithTooltip">
 					<ng-template #template let-data>
 						<div>
 							<span>{{ data.code + '-' +  data.description }}</span>
